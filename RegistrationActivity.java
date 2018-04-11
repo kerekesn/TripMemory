@@ -119,7 +119,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     flag = true;
                     Log.d(TAG_REG, "reg completed");
-                    //saveUserInformation(name,email);
+                    //saveUserInformation(mName,mEmail);
 
                 }
             }
