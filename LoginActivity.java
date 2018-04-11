@@ -18,31 +18,29 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     //Firebase:
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabaseReference;
 
     //Member:
-    private Button mRegistrationButton;
-    private AutoCompleteTextView mUserNameTextView, mEmailTextView, mPasswordTextView, mConfPasswordTextView;
+    private Button mLoginButton, mRegisterButton, mForgotPasswordButton;
+    private AutoCompleteTextView mEmailTextView, mPasswordTextView;
     private Context mContext;
-    private String mEmail, mName, mPassword;
+    private String mEmail, mPassword;
 
     //Debug:
     private String TAG = RegistrationActivity.class.getSimpleName();
     private static final String TAG_REG = "TAG_RGISTRATION";
-    private boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_login);
 
         //initialize auth
         mAuth = FirebaseAuth.getInstance();
@@ -58,10 +56,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 if (user != null) {
                     // User is signed in
-                    Log.d(TAG_REG, "onAuthStateChanged:signed_in:" + user.getUid() + "name: "+ user.getEmail());
-
-                    saveUserInformation(mName, mEmail);
-
+                    Log.d(TAG_REG, "onAuthStateChanged:signed_in:" + user.getUid() + "name: " + user.getEmail());
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    //intent2.putExtra("VISIBLE","user");
+                    startActivity(intent);
                 } else {
                     // User is signed out
                     Log.d(TAG_REG, "onAuthStateChanged:signed_out");
@@ -70,83 +68,80 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         };
 
-        mUserNameTextView = (AutoCompleteTextView) findViewById(R.id.user_name);
-        mEmailTextView = (AutoCompleteTextView) findViewById(R.id.email);
-        mPasswordTextView = (AutoCompleteTextView) findViewById(R.id.password);
-        mConfPasswordTextView = (AutoCompleteTextView) findViewById(R.id.confirm_password);
+        mEmailTextView = (AutoCompleteTextView) findViewById(R.id.email_login);
+        mPasswordTextView = (AutoCompleteTextView) findViewById(R.id.password_login);
 
-        mRegistrationButton = (Button) findViewById(R.id.registration_button);
-        mRegistrationButton.setOnClickListener(new View.OnClickListener() {
+        mLoginButton = (Button) findViewById(R.id.logIn_button);
+        mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!isNetworkConnected()) {
-                    mContext = RegistrationActivity.this;
+                    mContext = LoginActivity.this;
                     Toast.makeText(mContext,R.string.no_internet_connection,Toast.LENGTH_LONG).show();
                 }else{
                     if (!verifyFields()) {
-                        Context context = RegistrationActivity.this;
+                        Context context = LoginActivity.this;
                         String message = "Check it!";
                         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                     } else {
-                        mName = mUserNameTextView.getText().toString().trim();
                         mEmail = mEmailTextView.getText().toString().trim();
                         mPassword = mPasswordTextView.getText().toString().trim();
 
-                        createAccount(mEmail, mPassword);
+                        signIn(mEmail, mPassword);
                     }
 
                 }
             }
         });
+
+        mRegisterButton = (Button) findViewById(R.id.register_button);
+        mRegisterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mForgotPasswordButton = (Button) findViewById(R.id.forgot_button);
+        mForgotPasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
-    private void createAccount(final String email, final String password) {
-        Log.d(TAG, "createAccount" + email);
-        if (!isEmailValid(email)) {
+    private void signIn(String email, String password){
+        Log.d(TAG, "singIn" + email);
+        if(!isEmailValid(email)){
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                Log.d(TAG_REG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+                Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
                 // If sign in fails, display a message to the user. If sign in succeeds
                 // the auth state listener will be notified and logic to handle the
                 // signed in user can be handled in the listener.
                 if (!task.isSuccessful()) {
-                    Toast.makeText(RegistrationActivity.this, R.string.auth_failed,
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(RegistrationActivity.this, R.string.auth_succ,
-                            Toast.LENGTH_SHORT).show();
-                    flag = true;
-                    Log.d(TAG_REG, "reg completed");
-                    //saveUserInformation(mName,mEmail);
-
+                    Toast.makeText(LoginActivity.this, R.string.sign_in_failed, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    //finish();
                 }
+                else{
+                    Toast.makeText(LoginActivity.this, R.string.sign_in_succ, Toast.LENGTH_SHORT).show();
+                    Intent intent2 = new Intent(LoginActivity.this, MainActivity.class);
+                    intent2.putExtra("VISIBLE","user");
+                    startActivity(intent2);
+                    //finish();
+                }
+
             }
         });
-    }
-
-    private void saveUserInformation(String name, String email) {
-
-        final UserInformation userInformation = new UserInformation(name, email);
-        FirebaseUser user = mAuth.getCurrentUser();
-        Log.d(TAG_REG, "writing user info " + user.getUid());
-
-        mDatabaseReference.child("user").child(user.getUid()).setValue(userInformation, new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-
-                Intent intent = new Intent(RegistrationActivity.this,MainActivity.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                //intent.putExtra("VISIBLE","user");
-                startActivity(intent);
-                finish();
-            }
-        });
-
-
     }
 
     private boolean isNetworkConnected() {
@@ -165,15 +160,11 @@ public class RegistrationActivity extends AppCompatActivity {
     private boolean verifyFields() {
         // Reset errors.
         mEmailTextView.setError(null);
-        mUserNameTextView.setError(null);
         mPasswordTextView.setError(null);
-        mConfPasswordTextView.setError(null);
 
         // Store values at the time of the login attempt.
         String email = mEmailTextView.getText().toString();
-        String name = mUserNameTextView.getText().toString();
         String password = mPasswordTextView.getText().toString();
-        String comfPassword = mConfPasswordTextView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -185,39 +176,10 @@ public class RegistrationActivity extends AppCompatActivity {
             cancel = true;
         }
 
-        // Check for a valid confirm password, if the user entered one.
-        if (!TextUtils.isEmpty(comfPassword) && !isPasswordValid(comfPassword)) {
-            mConfPasswordTextView.setError(getString(R.string.error_invalid_password));
-            focusView = mConfPasswordTextView;
-            cancel = true;
-        }
-
-        //Check for password field is equal with confirm password field
-        if (!mPasswordTextView.getText().toString().equals(mConfPasswordTextView.getText().toString())) {
-            mPasswordTextView.setError(getString(R.string.error_isnotequal_password));
-            mConfPasswordTextView.setError(getString(R.string.error_isnotequal_password));
-            focusView = mConfPasswordTextView;
-            cancel = true;
-        }
-
-        //Check for name field is not empty
-        if (TextUtils.isEmpty(name)) {
-            mUserNameTextView.setError(getString(R.string.error_field_required));
-            focusView = mUserNameTextView;
-            cancel = true;
-        }
-
         //Check for password field is not empty
         if (TextUtils.isEmpty(password)) {
             mPasswordTextView.setError(getString(R.string.error_field_required));
             focusView = mPasswordTextView;
-            cancel = true;
-        }
-
-        //Check for comfirm password field is not empty
-        if (TextUtils.isEmpty(comfPassword)) {
-            mConfPasswordTextView.setError(getString(R.string.error_field_required));
-            focusView = mConfPasswordTextView;
             cancel = true;
         }
 
@@ -239,17 +201,5 @@ public class RegistrationActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
-    }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
-    }
 }
