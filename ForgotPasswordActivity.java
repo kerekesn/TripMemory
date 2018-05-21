@@ -1,6 +1,7 @@
 package com.example.kerekesnora.tripmemory;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,7 +21,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     //Member:
     Context mContext = ForgotPasswordActivity.this;
     AutoCompleteTextView mForgotEmailTextView;
-    Button mForgotPasswordButton;
+    Button mSendEmailButton;
 
     //Firebase:
     private FirebaseAuth mAuth;
@@ -37,8 +38,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         mForgotEmailTextView = (AutoCompleteTextView) findViewById(R.id.forgot_email);
-        mForgotPasswordButton = (Button) findViewById(R.id.forgot_button);
-        mForgotPasswordButton.setOnClickListener(new View.OnClickListener() {
+        mSendEmailButton = (Button) findViewById(R.id.send_email_button);
+        mSendEmailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!isNetworkConnected()) {
@@ -52,6 +53,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                                 Log.d(TAG, "Email sent.");
                                 String message = "Email successfully sent!";
                                 Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(ForgotPasswordActivity.this,LoginActivity.class);
+                                startActivity(intent);
+                                finish();
                             }
                         }
                     });

@@ -76,14 +76,11 @@ public class MainActivity extends AppCompatActivity {
         final MenuItem logoutItem, loginItem;
 
         logoutItem = menu.findItem(R.id.logout_item);
-        loginItem = menu.findItem(R.id.login_item);
 
         if(mAuth != null){
             logoutItem.setEnabled(true);
-            loginItem.setEnabled(false);
         }else{
             logoutItem.setEnabled(false);
-            loginItem.setEnabled(true);
         }
 
         logoutItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -95,20 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
 
                 Log.d("AUTH",mAuth.getCurrentUser() + " ");
-                loginItem.setEnabled(true);
-                return true;
-            }
-        });
-
-        loginItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(intent);
-                finish();
-
-                Log.d("AUTH",mAuth.getCurrentUser() + " ");
-                logoutItem.setEnabled(true);
                 return true;
             }
         });
