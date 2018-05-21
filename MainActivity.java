@@ -3,23 +3,24 @@ package com.example.kerekesnora.tripmemory;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
-
+    //Firebase:
     private String TAG = RegistrationActivity.class.getSimpleName();
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    private Button mSignOutButton;
+    //Member:
+    private FloatingActionButton mAddMemoryButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +43,16 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        mSignOutButton = (Button) findViewById(R.id.signout_button);
-        mSignOutButton.setOnClickListener(new View.OnClickListener() {
+        mAddMemoryButton = (FloatingActionButton) findViewById(R.id.add_memory_button);
+        mAddMemoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userSignOut();
+                Intent intent = new Intent(MainActivity.this, AddMemoryActivity.class);
+                startActivity(intent);
             }
         });
+
+
 
     }
 
