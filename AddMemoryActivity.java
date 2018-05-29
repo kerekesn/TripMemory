@@ -38,7 +38,7 @@ public class AddMemoryActivity extends AppCompatActivity {
 
     //Members
     private TextView mLocationTextView, mDateTextView;
-    private String mLocationString, mDateString, mStoryString, mImageString;
+    private String mLocationString, mDateString, mStoryString, mImageString, mActualImageName;
     private EditText mStoryEditText;
     private ImageButton mLocationButton, mDateButton;
     private int currentYear, currentMonth, currentDay;
@@ -163,6 +163,7 @@ public class AddMemoryActivity extends AppCompatActivity {
             progressDialog.show();
 
             StorageReference ref = firebaseStorageReference.child("images/"+ UUID.randomUUID().toString());
+            mActualImageName = ref.getName();
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -191,17 +192,19 @@ public class AddMemoryActivity extends AppCompatActivity {
     }
 
     private void saveMemory(){
+        uploadImage();
         mDateString = mDateTextView.getText().toString();
         mLocationString = mLocationTextView.getText().toString();
         mStoryString = mStoryEditText.getText().toString();
-        //mImageString = mImageView.geti
+        mImageString = mActualImageName.toString();
 
         UserData userData = new UserData(mDateString,mLocationString,mStoryString,mImageString);
         FirebaseUser user = mAuth.getCurrentUser();
         String userId = user.getUid();
-        //databaseReference.child(userId).child("data").child(mDateString).child(mLocationString).setValue(userData);
+        databaseReference.child("data").child(userId).child(mDateString).child(mLocationString).setValue(userData);
+        //databaseReference.child(userId).child("data").child(mDateString).child(mLocationString).child("images").setValue(mImageString);
 
-        uploadImage();
+        //Toast.makeText(AddMemoryActivity.this, R.string.save_memory_succ, Toast.LENGTH_SHORT).show();
     }
 }
 
