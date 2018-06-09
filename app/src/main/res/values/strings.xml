@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">TripMemory</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_location">Location</string>
+    <string name="hint_date">Date</string>
+    <string name="hint_story">Write down your memories...</string>
+    <string name="hint_comfirmpassword">Confirm password</string>
+    <string name="error_invalid_email">This email address is invalid!</string>
+    <string name="error_invalid_password">This password is invalid!</string>
+    <string name="error_field_required">This field is required!</string>
+    <string name="error_isnotequal_password">The password is not the same!</string>
+    <string name="no_internet_connection">Check the internet connection!</string>
+    <string name="auth_failed">Registration failed</string>
+    <string name="auth_succ">Successful registration</string>
+    <string name="sign_in_failed">Sign in failed</string>
+    <string name="sign_in_succ">Sign in successful</string>
+    <string name="check_fields">Check the fields!</string>
+    <string name="date_field">The date field is required!</string>
+    <string name="location_field">The location field is required!</string>
+    <string name="save_memory_succ">Your memories have been successfully saved!</string>
+
+    <string name="title_activity_basic">BasicActivity</string>
+</resources>

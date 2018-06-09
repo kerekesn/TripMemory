@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kerekesnora.tripmemory.AddMemoryActivity">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add new memory"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            android:textColor="@color/colorPrimaryDark"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/img_date"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/calendar_ic"
+                android:scaleType="fitCenter"/>
+
+            <TextView
+                android:id="@+id/date_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="fill"
+                android:hint="@string/hint_date"
+                android:text=""
+                android:textSize="19sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/img_location"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/location_ic1"
+                android:scaleType="fitCenter"/>
+
+            <TextView
+                android:id="@+id/location_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="fill"
+                android:hint="@string/hint_location"
+                android:textSize="19sp"
+                android:text="location"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/story_id"
+            android:layout_width="match_parent"
+            android:layout_height="169dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="top|left"
+            android:hint="@string/hint_story"
+            android:inputType="textMultiLine"
+            android:scrollbars="vertical" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/choose_button"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="Choose image" />
+
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:tag="image_tag"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/save_data_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE"
+            tools:layout_editor_absoluteX="6dp"
+            tools:layout_editor_absoluteY="415dp" />
+
+    </LinearLayout>
+
+
+</ScrollView>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "839786948913",
+    "firebase_url": "https://tripmemory-71b93.firebaseio.com",
+    "project_id": "tripmemory-71b93",
+    "storage_bucket": "tripmemory-71b93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839786948913:android:387d4ffc1f81d644",
+        "android_client_info": {
+          "package_name": "com.example.kerekesnora.tripmemory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839786948913-609qsau8a8l5lm8nj1ne808smjjss3o4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kerekesnora.tripmemory",
+            "certificate_hash": "d40b9bdcb8f3e3e1d14dc625ea4698e60657cf0c"
+          }
+        },
+        {
+          "client_id": "839786948913-83n4pdhgsdsmomv9ssr7j60c3keob41i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfkfNFjLnuHyFXIAQ2mjKvDTRyp_NWT8U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839786948913-83n4pdhgsdsmomv9ssr7j60c3keob41i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
