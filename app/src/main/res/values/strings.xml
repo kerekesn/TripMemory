@@ -20,6 +20,7 @@
     <string name="date_field">The date field is required!</string>
     <string name="location_field">The location field is required!</string>
     <string name="save_memory_succ">Your memories have been successfully saved!</string>
+    <string name="read_failed">Reading memories failed!</string>
 
     <string name="title_activity_basic">BasicActivity</string>
 </resources>
