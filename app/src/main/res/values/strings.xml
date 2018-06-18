@@ -11,6 +11,7 @@
     <string name="error_invalid_password">This password is invalid!</string>
     <string name="error_field_required">This field is required!</string>
     <string name="error_isnotequal_password">The password is not the same!</string>
+    <string name="error_fields">Check the fields!</string>
     <string name="no_internet_connection">Check the internet connection!</string>
     <string name="auth_failed">Registration failed</string>
     <string name="auth_succ">Successful registration</string>
@@ -21,6 +22,8 @@
     <string name="location_field">The location field is required!</string>
     <string name="save_memory_succ">Your memories have been successfully saved!</string>
     <string name="read_failed">Reading memories failed!</string>
+    <string name="send_email_succ">The email successfully sent</string>
+    <string name="send_email_failed">Sending email failed!</string>
 
     <string name="title_activity_basic">BasicActivity</string>
 </resources>
