@@ -7,4 +7,7 @@
     <color name="colorOrange">#FFA500</color>
     <color name="colorGreen">#397D02</color>
     <color name="colorBrown">#7D441D</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorYellow">#fae421</color>
+    <color name="colorLightGreen">#60d74b</color>
 </resources>

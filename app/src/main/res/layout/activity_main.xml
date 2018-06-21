@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.kerekesnora.tripmemory.MainActivity">
 
         <android.support.design.widget.TabLayout
@@ -24,7 +25,6 @@
             android:layout_height="573dp">
 
         </android.support.v4.view.ViewPager>
-
 
 
         <android.support.design.widget.FloatingActionButton
