@@ -10,9 +10,10 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
+
     <TextView
         android:id="@+id/upload_image_name"
-        android:layout_width="200dp"
+        android:layout_width="156dp"
         android:layout_height="50dp" />
 
 </RelativeLayout>
