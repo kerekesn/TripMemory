@@ -3,8 +3,8 @@
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="hint_username">Username</string>
-    <string name="hint_location">Location</string>
-    <string name="hint_date">Date</string>
+    <string name="hint_location">Type the location</string>
+    <string name="hint_date">Pick the date</string>
     <string name="hint_story">Write down your memories...</string>
     <string name="hint_comfirmpassword">Confirm password</string>
     <string name="error_invalid_email">This email address is invalid!</string>

@@ -27,12 +27,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageButton
                 android:id="@+id/img_date"
-                android:layout_width="80dp"
+                android:layout_width="83dp"
                 android:layout_height="80dp"
-                android:src="@drawable/calendar_ic"
-                android:scaleType="fitCenter"/>
+                android:scaleType="fitCenter"
+                android:src="@drawable/calendar_ic" />
 
             <TextView
                 android:id="@+id/date_id"
@@ -49,23 +50,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <ImageButton
+            <ImageView
                 android:id="@+id/img_location"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/location_ic1"
                 android:scaleType="fitCenter"/>
 
-            <TextView
+            <AutoCompleteTextView
                 android:id="@+id/location_id"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
                 android:gravity="fill"
                 android:hint="@string/hint_location"
-                android:textSize="19sp"
-                android:text="location"/>
+                android:inputType="text"
+                android:textSize="19sp" />
         </LinearLayout>
 
         <EditText
@@ -80,19 +82,29 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/choose_button"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Choose image" />
+                android:text="Choose image"
+                android:background="@drawable/roundedbutton"/>
 
+            <ImageView
+                android:id="@+id/image_view_add"
+                android:layout_width="190dp"
+                android:layout_height="160dp"
+                android:layout_gravity="end"
+                android:layout_marginStart="50dp" />
+
+            <!--
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/image_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="197dp" />
+                -->
         </LinearLayout>
 
         <Button
@@ -101,7 +113,8 @@
             android:layout_height="wrap_content"
             android:text="SAVE"
             tools:layout_editor_absoluteX="6dp"
-            tools:layout_editor_absoluteY="415dp" />
+            tools:layout_editor_absoluteY="415dp"
+            android:background="@drawable/roundedbutton"/>
 
     </LinearLayout>
 

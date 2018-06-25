@@ -45,21 +45,24 @@
             android:layout_height="wrap_content"
             android:text="Sign in"
             android:layout_marginTop="8dp"
-            android:background="@drawable/roundedbutton"/>
+            android:background="@drawable/roundedbutton"
+            android:textColor="@color/LightGray"/>
 
         <Button
             android:id="@+id/register_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Registration"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:background="@drawable/roundedbutton"/>
 
         <Button
             android:id="@+id/forgot_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Forgot password"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:background="@drawable/roundedbutton"/>
 
 
     </LinearLayout>

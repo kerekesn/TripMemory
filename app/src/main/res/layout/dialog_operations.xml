@@ -19,14 +19,14 @@
                 android:id="@+id/dialog_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginLeft="40dp"/>
+                android:layout_marginLeft="20dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="vertical"
-                android:layout_marginLeft="40dp">
+                android:layout_marginLeft="10dp">
 
                 <TextView
                     android:id="@+id/location_dialog"
@@ -54,38 +54,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/modify_button"
-                android:layout_width="80dp"
+                android:id="@+id/view_button"
+                style="@style/Base.Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
                 android:layout_marginRight="8dp"
-                android:layout_marginLeft="6dp"
+                android:layout_marginLeft="8dp"
                 android:gravity="center"
-                android:text="Modify"
-                style="@style/Base.Widget.AppCompat.Button.ButtonBar.AlertDialog"/>
-
-            <Button
-                android:id="@+id/view_button"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="8dp"
-                android:gravity="center"
-                android:text="Delete"
-                style="@style/Base.Widget.AppCompat.Button.ButtonBar.AlertDialog"/>
+                android:text="View" />
 
             <Button
                 android:id="@+id/rate_button"
-                android:layout_width="80dp"
+                style="@style/Base.Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:gravity="center"
-                android:text="Rate"
-                style="@style/Base.Widget.AppCompat.Button.ButtonBar.AlertDialog"/>
+                android:text="Rate" />
 
         </LinearLayout>
     </LinearLayout>

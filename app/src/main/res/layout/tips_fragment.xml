@@ -5,7 +5,7 @@
     android:paddingTop="75dp">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/favourites_recyclerview"
+        android:id="@+id/tips_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="always">
